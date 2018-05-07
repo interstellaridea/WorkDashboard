@@ -1,13 +1,5 @@
-version: "2"
+version: "3"
 services:
-  node_server:
-    container_name: "node_server"
-    restart: "always"
-    build: .
-    ports:
-      - "5000:5000"
-    links:
-      - mongoDB
   mongoDB:
     container_name: "mongo_database"
     image: "mongo"
@@ -17,7 +9,19 @@ services:
       - "27017:27017"
     env_file:
       - .workdash.env
+  node_server:
+    container_name: "node_server"
+    restart: "always"
+    depends_on:
+      - mongoDB
+    build: .
+    ports:
+      - "5000:5000"
+    links:
+      - mongoDB
   adminMongo:
     image: "mrvautin/adminmongo"
+    depends_on:
+      - mongoDB
     ports:
       - "1234:1234"
