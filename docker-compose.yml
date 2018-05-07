@@ -1,0 +1,23 @@
+version: "2"
+services:
+  node_server:
+    container_name: "node_server"
+    restart: "always"
+    build: .
+    ports:
+      - "5000:5000"
+    links:
+      - mongoDB
+  mongoDB:
+    container_name: "mongo_database"
+    image: "mongo"
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    env_file:
+      - .workdash.env
+  adminMongo:
+    image: "mrvautin/adminmongo"
+    ports:
+      - "1234:1234"
