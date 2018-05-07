@@ -4,10 +4,8 @@
   "description": "dashboard using admin on rest",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon index.js",
-    "start": "node index.js",
-    "inspect-server": "node --inspec=9229 index.js"
+    "start": "nodemon index.js",
+    "debug-server": "node --inspect=9229 index.js"
   },
   "author": "",
   "license": "ISC",
