@@ -31,7 +31,7 @@ app.use(expressChromeLogger);
 app.use(bodyParser.json());
 
 // CronJobs
-require('./conjobs/zoomCrons')(app);
+require('./cronjobs/zoomCrons')(app);
 
 // Routes
 app.get('/', (req, res) => {
