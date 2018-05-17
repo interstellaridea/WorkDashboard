@@ -4,5 +4,4 @@ pakcage-lock.json
 node_modules
 config/keys.example.js
 db_data/*
-mongo_image/.mongo_vars.env
 notes
