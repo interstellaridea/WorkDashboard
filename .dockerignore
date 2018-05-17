@@ -1,6 +1,6 @@
 .git
 .dockerignore
-pakcage-lock.json
+package-lock.json
 node_modules
 config/keys.example.js
 db_data/*
