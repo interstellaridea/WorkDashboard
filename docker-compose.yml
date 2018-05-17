@@ -1,27 +1,30 @@
 version: "3"
+
 services:
-  mongoDB:
-    container_name: "mongo_database"
-    image: "mongo"
-    volumes:
-      - ./data:/data/db
+
+  mongo:
+    image: "mongo_db"
+    build: ./mongo_image
     ports:
       - "27017:27017"
+    volumes:
+      - ./db_data:/data/db
     env_file:
-      - .workdash.env
+      - ./mongo_image/.mongo_vars.env
+
   node_server:
     container_name: "node_server"
     restart: "always"
     depends_on:
-      - mongoDB
+      - mongo
     build: .
     ports:
       - "5000:5000"
-    links:
-      - mongoDB
+      - "9229:9229"
+
   adminMongo:
     image: "mrvautin/adminmongo"
     depends_on:
-      - mongoDB
+      - mongo
     ports:
       - "1234:1234"
